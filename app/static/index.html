@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Q&A Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>📄 AI Document Q&A Assistant</h1>
+            <p class="subtitle">
+                Upload documents and ask questions using 
+                <strong>Retrieval-Augmented Generation (RAG)</strong>.
+            </p>
+        </header>
+
+        <!-- Document Upload Section -->
+        <section class="card">
+            <h2>📤 Upload Document</h2>
+            <p class="help-text">Supported formats: PDF, TXT (max 10 MB)</p>
+            <div class="upload-area">
+                <input type="file" id="fileInput" accept=".pdf,.txt">
+                <button id="uploadBtn" onclick="uploadDocument()">
+                    Upload Document
+                </button>
+            </div>
+            <div id="uploadStatus" class="status hidden"></div>
+        </section>
+
+        <!-- Uploaded Documents Section -->
+        <section class="card">
+            <h2>📚 Uploaded Documents</h2>
+            <div id="documentList" class="document-list">
+                <p class="empty-state">No documents uploaded yet.</p>
+            </div>
+            <button class="secondary-btn" onclick="loadDocuments()">
+                🔄 Refresh List
+            </button>
+        </section>
+
+        <!-- Question Section -->
+        <section class="card">
+            <h2>❓ Ask a Question</h2>
+            <p class="help-text">
+                Ask any question about your uploaded documents.
+            </p>
+            <div class="question-area">
+                <input 
+                    type="text" 
+                    id="questionInput" 
+                    placeholder="e.g., What is the annual leave policy?"
+                    onkeypress="handleKeyPress(event)"
+                >
+                <button id="askBtn" onclick="askQuestion()">
+                    Ask Question
+                </button>
+            </div>
+        </section>
+
+        <!-- Answer Section (hidden initially) -->
+        <section id="answerSection" class="card hidden">
+            <h2>💬 Answer</h2>
+            <div id="answerContent" class="answer-content"></div>
+            
+            <div id="sourcesSection" class="sources-section hidden">
+                <h3>📌 Sources</h3>
+                <div id="sourcesList" class="sources-list"></div>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Processing your request...</p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                Built with FastAPI, LangChain, ChromaDB & OpenAI | 
+                <a href="/docs" target="_blank">API Documentation</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

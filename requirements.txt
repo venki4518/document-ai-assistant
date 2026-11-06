@@ -1,0 +1,33 @@
+# ============================================
+# AI Document Q&A Assistant - Dependencies
+# ============================================
+
+# Web framework for building the REST API
+fastapi>=0.115.0
+
+# ASGI server to run FastAPI
+uvicorn[standard]>=0.34.0
+
+# LangChain core & components
+langchain>=0.3.0
+langchain-text-splitters>=0.3.0
+langchain-openai>=0.3.0
+langchain-chroma>=0.2.0
+
+# ChromaDB - vector database for storing embeddings
+chromadb>=0.5.0
+
+# PDF text extraction
+pypdf>=5.0.0
+
+# Load environment variables from .env file
+python-dotenv>=1.0.0
+
+# Required for FastAPI file uploads
+python-multipart>=0.0.20
+
+# Testing framework
+pytest>=8.0.0
+httpx>=0.28.0
+sentence-transformers>=3.0.0
+langchain-community>=0.3.0
